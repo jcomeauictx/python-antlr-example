@@ -67,6 +67,6 @@ return Character.toCodePoint(chr(_input.LA(-2)), chr(_input.LA(-1)))
 
 ## Run the example
 
-`python tokenize.py`
+`python ANTLR_tokenize.py`
 
 This will print out each token along with its corresponding "type". The type will just be an integer, and if you go into the Java9Lexer.py, you will see what each integer represents. The problem is that the 'types' won't line up across languages, i.e. Identifier is 115 in Java9, but 102 in Java8. If you need it so you want everything to line up across languages, you're going to have to make a look-up table with a quick copy and paste and convert to a dictionary.
