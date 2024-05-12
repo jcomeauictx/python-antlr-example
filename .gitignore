@@ -6,5 +6,8 @@ ArrowFunctions.js
 *Listener.py
 JavaScriptLexer.g4
 JavaScriptParser.g4
+*Base.py
+transformGrammar.py
+*.bak
 __pycache__/
 
