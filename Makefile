@@ -1,10 +1,12 @@
 GRAMMARS := https://raw.githubusercontent.com/antlr/grammars-v4/master
-PARSER ?= JavaScript
-TARGET ?= Python3
-JAVASCRIPT := $(GRAMMARS)/javascript/javascript
-BASE := $(JAVASCRIPT)/$(TARGET)
-EXAMPLES = $(JAVASCRIPT)/examples
-G4FILES := $(PARSER)Parser.g4 $(PARSER)Lexer.g4
+JAVASCRIPT := JavaScript
+PYTHON := Python3
+PARSER ?= JAVASCRIPT
+TARGET ?= PYTHON
+JAVASCRIPTGRAMMAR := $(GRAMMARS)/javascript/javascript
+BASE := $($(PARSER)GRAMMAR)/$($(TARGET))
+EXAMPLES = $($(PARSER)GRAMMAR)/examples
+G4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 PARSERS := $(G4FILES:.g4=.py)
 LISTENER := $(PARSER)ParserListener.py
 EXAMPLEFILES := ArrowFunctions.js
@@ -16,6 +18,8 @@ ifneq ($(SHOWENV),)
 	export
 endif
 all: $(EXAMPLEFILES) parse
+hello:
+	$(MAKE) PARSER=Hello
 $(G4FILES):
 	if [ -f "$@.bak" ]; then \
 	 mv $@.bak $@; \
@@ -25,7 +29,9 @@ $(G4FILES):
 $(EXAMPLEFILES):
 	wget $(EXAMPLES)/$@
 $(BASEFILES):
-	wget $(BASE)/$@
+	if [ "$(PARSER) != "Hello" ]; then \
+	 wget $(BASE)/$@; \
+	fi
 env:
 ifneq ($(SHOWENV),)
 	env
