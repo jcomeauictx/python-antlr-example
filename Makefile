@@ -9,14 +9,19 @@ PARSERS := $(G4FILES:.g4=.py)
 LISTENER := $(PARSER)ParserListener.py
 EXAMPLEFILES := ArrowFunctions.js
 BASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
-DOWNLOADED := $(G4FILES:.g4=.bak) $(BASEFILES)
+BAKFILES := $(G4FILES:.g4=g4.bak)
+DOWNLOADED := $(BAKFILES) $(BASEFILES)
 GENERATED := $(G4FILES) $(LISTENER) *.interp *.tokens
 ifneq ($(SHOWENV),)
 	export
 endif
 all: $(EXAMPLEFILES) parse
 $(G4FILES):
-	wget $(JAVASCRIPT)/$@
+	if [ -f "$@.bak" ]; then \
+	 mv $@.bak $@; \
+	else \
+	 wget $(JAVASCRIPT)/$@; \
+	fi
 $(EXAMPLEFILES):
 	wget $(EXAMPLES)/$@
 $(BASEFILES):
