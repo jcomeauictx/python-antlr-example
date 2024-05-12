@@ -41,10 +41,10 @@ endif
 transform: transformGrammar.py $(G4FILES) $(BASEFILES)
 	python3 $<
 %.interp %.tokens %Listener.py %.py: %.g4 transform
-	antlr4 -Dlanguage=$(TARGET) $(*:Parser=*.g4)
+	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=*.g4)
 clean:
 	rm -f $(GENERATED)
 distclean: clean
 	rm -f $(DOWNLOADED)
-parse: jsparse.py $(PARSER)Parser.py
+parse: jsparse.py $($(PARSER))Parser.py
 	./$< $(word 1, $(EXAMPLEFILES))
