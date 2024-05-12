@@ -1,12 +1,16 @@
 GRAMMARS := https://raw.githubusercontent.com/antlr/grammars-v4/master
+PARSER ?= JavaScript
+TARGET ?= Python3
 JAVASCRIPT := $(GRAMMARS)/javascript/javascript
-BASE := $(JAVASCRIPT)/Python3
+BASE := $(JAVASCRIPT)/$(TARGET)
 EXAMPLES = $(JAVASCRIPT)/examples
-G4FILES := JavaScriptLexer.g4 JavaScriptParser.g4
-# :sigh: antlr4 outputs bad Python...
-CORRECTION := 's/!\(this.IsStrictMode\)/not \1/'
+G4FILES := $(PARSER)Parser.g4 $(PARSER)Lexer.g4
+PARSERS := $(G4FILES:.g4=.py)
+LISTENER := $(PARSER)ParserListener.py
 EXAMPLEFILES := ArrowFunctions.js
 BASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
+DOWNLOADED := $(G4FILES:.g4=.bak) $(BASEFILES)
+GENERATED := $(G4FILES) $(LISTENER) *.interp *.tokens
 ifneq ($(SHOWENV),)
 	export
 endif
@@ -26,9 +30,10 @@ endif
 transform: transformGrammar.py $(G4FILES) $(BASEFILES)
 	python3 $<
 %.interp %.tokens %Listener.py %.py: %.g4 transform
-	antlr4 -Dlanguage=Python3 $(*:Parser=*.g4)
-	#sed -i $(CORRECTION) $(*:Parser=Lexer).py
+	antlr4 -Dlanguage=$(TARGET) $(*:Parser=*.g4)
 clean:
-	rm -f *Lexer.py *Parser.py *Listener.py *.interp *.tokens
-parse: jsparse.py JavaScriptParser.py
+	rm -f $(GENERATED)
+distclean: clean
+	rm -f $(DOWNLOADED)
+parse: jsparse.py $(PARSER)Parser.py
 	./$< $(word 1, $(EXAMPLEFILES))
