@@ -1,0 +1,10 @@
+ArrowFunctions.js
+*.interp
+*.tokens
+*Lexer.py
+*Parser.py
+*Listener.py
+JavaScriptLexer.g4
+JavaScriptParser.g4
+__pycache__/
+
