@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from antlr4 import *
 from Java9Lexer import Java9Lexer
 from Java9Parser import Java9Parser
