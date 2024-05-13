@@ -29,8 +29,10 @@ def main(argv):
     logging.info('walking parse tree')
     ParseTreeWalker.DEFAULT.walk(WriteTreeListener(), tree)
     logging.info('token list')
+    input_stream.seek(0)
+    lexer = JSL(input_stream)
     for token in lexer.getAllTokens():
-        print(t.text, t.type)
+        logging.info('"%s", %s', token.text, token.type)
 
 if __name__ == '__main__':
     print("Running")
