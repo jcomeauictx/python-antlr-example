@@ -13,7 +13,7 @@ JAVASCRIPTG4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 HELLOG4FILES := $($(PARSER)).g4
 G4FILES := $($(PARSER)G4FILES)
 BAKFILES := $(G4FILES:.g4=.g4.bak)
-PARSERS := $(G4FILES:.g4=.py)
+PARSERS := $($(PARSER))Parser.py $($(PARSER))Lexer.py
 PARSE := $(word 1, $(PARSERS))
 LISTENER := $(PARSE:.py=Listener.py)
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
