@@ -8,12 +8,13 @@ TARGET ?= PYTHON
 JAVASCRIPTGRAMMAR := $(GRAMMARS)/javascript/javascript
 BASE := $($(PARSER)GRAMMAR)/$($(TARGET))
 EXAMPLES = $($(PARSER)GRAMMAR)/examples
-G4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
-PARSERS := $(G4FILES:.g4=.py)
+JAVASCRIPTG4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
+HELLOG4FILES := $($(PARSER)).g4
+PARSERS := $($(PARSER))G4FILES:.g4=.py)
 LISTENER := $(PARSER)ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= <(echo Hello $(USER))
-BASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
+JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BAKFILES := $(G4FILES:.g4=g4.bak)
 DOWNLOADED := $(BAKFILES) $(BASEFILES)
 GENERATED := $(G4FILES) $(LISTENER) *.interp *.tokens
@@ -48,8 +49,8 @@ transform: transformGrammar.py $(G4FILES) $(BASEFILES)
 %.interp %.tokens %Listener.py %.py: %.g4 transform
 	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=*.g4)
 clean:
-	rm -f $(GENERATED)
+	rm -f dummy $(GENERATED)
 distclean: clean
-	rm -f $(DOWNLOADED)
+	rm -f dummy $(DOWNLOADED)
 parse: $($(PARSER)PARSER) $($(PARSER))Parser.py
 	./$< $($(PARSER)EXAMPLE)
