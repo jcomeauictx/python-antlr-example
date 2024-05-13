@@ -40,7 +40,9 @@ $(G4FILES):
 	 wget $(GRAMMAR)/$@; \
 	fi
 $(EXAMPLE):
-	wget $(EXAMPLES)/$@
+	if [ "$(PARSER)" != "HELLO" ]; then \
+	 wget $(EXAMPLES)/$@; \
+	fi
 $(BASEFILES):
 	if [ "$(PARSER)" != "HELLO" ]; then \
 	 wget $(BASE)/$@; \
