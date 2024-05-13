@@ -61,6 +61,7 @@ $(PARSERS): $(G4FILES) transform
 	antlr4 -Dlanguage=$($(TARGET)) $(filter-out transform, $+)
 clean:
 	rm -f dummy $(GENERATED)
+	rm -rf __pycache__
 	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 distclean: clean
 	rm -f dummy $(DOWNLOADED) $(JAVASCRIPTEXAMPLE)
