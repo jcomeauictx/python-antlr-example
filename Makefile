@@ -19,6 +19,7 @@ PARSE := $(word 1, $(PARSERS))
 LISTENER := $(G4FILE:.g4=Listener.py)
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= Hello $(USER)
+EXAMPLE := $($(PARSER)EXAMPLE)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BASEFILES := $($(PARSER)BASEFILES)
 DOWNLOADED := $(BAKFILES) $(BASEFILES)
@@ -29,7 +30,7 @@ JAVASCRIPTPARSER := jsparse.py
 ifneq ($(SHOWENV),)
 	export
 endif
-all: $(EXAMPLEFILES) parse
+all: $(EXAMPLE) parse
 hello:
 	$(MAKE) PARSER=HELLO
 $(G4FILES):
@@ -38,7 +39,7 @@ $(G4FILES):
 	else \
 	 wget $(GRAMMAR)/$@; \
 	fi
-$(EXAMPLEFILES):
+$(EXAMPLE):
 	wget $(EXAMPLES)/$@
 $(BASEFILES):
 	if [ "$(PARSER)" != "HELLO" ]; then \
