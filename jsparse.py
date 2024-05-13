@@ -4,10 +4,12 @@ Example JavaScript parser from ANTLR repository
 
 https://github.com/antlr/grammars-v4/tree/master/javascript/javascript/Python3
 '''
-import sys
+import sys, logging  # pylint: disable=multiple-imports
 from antlr4 import *
 import JavaScriptLexer
 import JavaScriptParser
+
+logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
 
 JSL = JavaScriptLexer.JavaScriptLexer
 JSP = JavaScriptParser.JavaScriptParser
@@ -24,7 +26,11 @@ def main(argv):
     parser = JSP(stream)
     print("Created parsers")
     tree = parser.program()
+    logging.info('walking parse tree')
     ParseTreeWalker.DEFAULT.walk(WriteTreeListener(), tree)
+    logging.info('token list')
+    for token in lexer.getAllTokens():
+        print(t.text, t.type)
 
 if __name__ == '__main__':
     print("Running")
