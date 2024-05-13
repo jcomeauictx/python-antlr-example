@@ -13,7 +13,7 @@ HELLOG4FILES := $($(PARSER)).g4
 G4FILES := $($(PARSER)G4FILES)
 PARSERS := $(G4FILES:.g4=.py)
 PARSE := $(word 1, $(PARSERS))
-LISTENER := $(PARSER)ParserListener.py
+LISTENER := $($(PARSER))ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= Hello $(USER)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
