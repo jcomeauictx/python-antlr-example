@@ -11,8 +11,8 @@ EXAMPLES = $($(PARSER)GRAMMAR)/examples
 JAVASCRIPTG4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 HELLOG4FILES := $($(PARSER)).g4
 G4FILES := $($(PARSER)G4FILES)
-PARSERS := $($(PARSER))G4FILES:.g4=.py)
-PARSE := $(words 1, $(PARSERS))
+PARSERS := $(G4FILES:.g4=.py)
+PARSE := $(word 1, $(PARSERS))
 LISTENER := $(PARSER)ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= <(echo Hello $(USER))
@@ -47,7 +47,9 @@ else
 	$(MAKE) SHOWENV=1 $@
 endif
 transform: transformGrammar.py $(G4FILES) $(BASEFILES)
-	python3 $<
+	if [ "$(BASEFILES)" ]; then \
+	 python3 $<; \
+	fi
 %.interp %.tokens %Listener.py %.py: %.g4 transform
 	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=*.g4)
 clean:
