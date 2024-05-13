@@ -53,8 +53,8 @@ transform: $(G4FILES) $(BASEFILES)
 	if [ "$(BASEFILES)" ]; then \
 	 python3 transformGrammar.py; \
 	fi
-%.interp %.tokens %Listener.py %.py: %.g4 transform
-	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=)*.g4
+$(PARSERS): $(G4FILES) transform
+	antlr4 -Dlanguage=$($(TARGET)) $(filter-out transform, $+)
 clean:
 	rm -f dummy $(GENERATED)
 	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
