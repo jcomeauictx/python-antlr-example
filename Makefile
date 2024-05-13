@@ -15,7 +15,7 @@ G4FILES := $($(PARSER)G4FILES)
 BAKFILES := $(G4FILES:.g4=.g4.bak)
 PARSERS := $(G4FILES:.g4=.py)
 PARSE := $(word 1, $(PARSERS))
-LISTENER := $($(PARSER))ParserListener.py
+LISTENER := $(PARSE:.py=Listener.py)
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= Hello $(USER)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
@@ -49,9 +49,9 @@ ifneq ($(SHOWENV),)
 else
 	$(MAKE) SHOWENV=1 $@
 endif
-transform: transformGrammar.py $(G4FILES) $(BASEFILES)
+transform: $(G4FILES) $(BASEFILES)
 	if [ "$(BASEFILES)" ]; then \
-	 python3 $<; \
+	 python3 transformGrammar.py; \
 	fi
 %.interp %.tokens %Listener.py %.py: %.g4 transform
 	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=)*.g4
