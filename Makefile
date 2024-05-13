@@ -10,7 +10,9 @@ BASE := $($(PARSER)GRAMMAR)/$($(TARGET))
 EXAMPLES = $($(PARSER)GRAMMAR)/examples
 JAVASCRIPTG4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 HELLOG4FILES := $($(PARSER)).g4
+G4FILES := $($(PARSER)G4FILES)
 PARSERS := $($(PARSER))G4FILES:.g4=.py)
+PARSE := $(words 1, $(PARSERS))
 LISTENER := $(PARSER)ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= <(echo Hello $(USER))
@@ -52,5 +54,5 @@ clean:
 	rm -f dummy $(GENERATED)
 distclean: clean
 	rm -f dummy $(DOWNLOADED)
-parse: $($(PARSER)PARSER) $($(PARSER))Parser.py
+parse: $($(PARSER)PARSER) $(PARSE)
 	./$< $($(PARSER)EXAMPLE)
