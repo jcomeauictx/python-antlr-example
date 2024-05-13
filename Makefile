@@ -1,6 +1,8 @@
+SHELL := /bin/bash
 GRAMMARS := https://raw.githubusercontent.com/antlr/grammars-v4/master
 JAVASCRIPT := JavaScript
 PYTHON := Python3
+HELLO := Hello
 PARSER ?= JAVASCRIPT
 TARGET ?= PYTHON
 JAVASCRIPTGRAMMAR := $(GRAMMARS)/javascript/javascript
@@ -9,17 +11,20 @@ EXAMPLES = $($(PARSER)GRAMMAR)/examples
 G4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 PARSERS := $(G4FILES:.g4=.py)
 LISTENER := $(PARSER)ParserListener.py
-EXAMPLEFILES := ArrowFunctions.js
+JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
+HELLOEXAMPLE ?= <(echo Hello $(USER))
 BASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BAKFILES := $(G4FILES:.g4=g4.bak)
 DOWNLOADED := $(BAKFILES) $(BASEFILES)
 GENERATED := $(G4FILES) $(LISTENER) *.interp *.tokens
+HELLOPARSER := helloparser.py
+JAVASCRIPTPARSER := jsparse.py
 ifneq ($(SHOWENV),)
 	export
 endif
 all: $(EXAMPLEFILES) parse
 hello:
-	$(MAKE) PARSER=Hello
+	$(MAKE) PARSER=HELLO
 $(G4FILES):
 	if [ -f "$@.bak" ]; then \
 	 mv $@.bak $@; \
@@ -29,7 +34,7 @@ $(G4FILES):
 $(EXAMPLEFILES):
 	wget $(EXAMPLES)/$@
 $(BASEFILES):
-	if [ "$(PARSER) != "Hello" ]; then \
+	if [ "$(PARSER)" != "HELLO" ]; then \
 	 wget $(BASE)/$@; \
 	fi
 env:
@@ -46,5 +51,5 @@ clean:
 	rm -f $(GENERATED)
 distclean: clean
 	rm -f $(DOWNLOADED)
-parse: jsparse.py $($(PARSER))Parser.py
-	./$< $(word 1, $(EXAMPLEFILES))
+parse: $($(PARSER)PARSER) $($(PARSER))Parser.py
+	./$< $($(PARSER)EXAMPLE)
