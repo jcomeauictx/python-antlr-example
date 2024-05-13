@@ -15,7 +15,7 @@ PARSERS := $(G4FILES:.g4=.py)
 PARSE := $(word 1, $(PARSERS))
 LISTENER := $(PARSER)ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
-HELLOEXAMPLE ?= <(echo Hello $(USER))
+HELLOEXAMPLE ?= Hello $(USER)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BAKFILES := $(G4FILES:.g4=g4.bak)
 DOWNLOADED := $(BAKFILES) $(BASEFILES)
@@ -51,7 +51,7 @@ transform: transformGrammar.py $(G4FILES) $(BASEFILES)
 	 python3 $<; \
 	fi
 %.interp %.tokens %Listener.py %.py: %.g4 transform
-	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=*.g4)
+	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=)*.g4
 clean:
 	rm -f dummy $(GENERATED)
 distclean: clean
