@@ -28,6 +28,8 @@ def main(argv):
     tree = parser.program()
     logging.info('walking parse tree')
     ParseTreeWalker.DEFAULT.walk(WriteTreeListener(), tree)
+    logging.info('reconstructed:')
+    print(tree.toStringTree(recog=parser))
     logging.info('token list')
     input_stream.seek(0)
     lexer = JSL(input_stream)
