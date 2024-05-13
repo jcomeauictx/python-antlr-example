@@ -61,7 +61,7 @@ clean:
 	rm -f dummy $(GENERATED)
 	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 distclean: clean
-	rm -f dummy $(DOWNLOADED)
+	rm -f dummy $(DOWNLOADED) $(JAVASCRIPTEXAMPLE)
 	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 parse: $($(PARSER)PARSER) $(PARSE)
 	./$< $($(PARSER)EXAMPLE)
