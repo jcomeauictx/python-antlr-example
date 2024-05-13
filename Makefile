@@ -6,20 +6,23 @@ HELLO := Hello
 PARSER ?= JAVASCRIPT
 TARGET ?= PYTHON
 JAVASCRIPTGRAMMAR := $(GRAMMARS)/javascript/javascript
-BASE := $($(PARSER)GRAMMAR)/$($(TARGET))
-EXAMPLES = $($(PARSER)GRAMMAR)/examples
+GRAMMAR := $($(PARSER)GRAMMAR)
+BASE := $(GRAMMAR)/$($(TARGET))
+EXAMPLES = $(GRAMMAR)/examples
 JAVASCRIPTG4FILES := $($(PARSER))Parser.g4 $($(PARSER))Lexer.g4
 HELLOG4FILES := $($(PARSER)).g4
 G4FILES := $($(PARSER)G4FILES)
+BAKFILES := $(G4FILES:.g4=.g4.bak)
 PARSERS := $(G4FILES:.g4=.py)
 PARSE := $(word 1, $(PARSERS))
 LISTENER := $($(PARSER))ParserListener.py
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= Hello $(USER)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
-BAKFILES := $(G4FILES:.g4=g4.bak)
+BASEFILES := $($(PARSER)BASEFILES)
 DOWNLOADED := $(BAKFILES) $(BASEFILES)
-GENERATED := $(G4FILES) $(LISTENER) *.interp *.tokens
+GENERATED := $(filter-out $(HELLOG4FILES), $(G4FILES)) $(LISTENER)
+GENERATED += $(PARSERS) *.interp *.tokens
 HELLOPARSER := helloparser.py
 JAVASCRIPTPARSER := jsparse.py
 ifneq ($(SHOWENV),)
@@ -32,7 +35,7 @@ $(G4FILES):
 	if [ -f "$@.bak" ]; then \
 	 mv $@.bak $@; \
 	else \
-	 wget $(JAVASCRIPT)/$@; \
+	 wget $(GRAMMAR)/$@; \
 	fi
 $(EXAMPLEFILES):
 	wget $(EXAMPLES)/$@
@@ -54,7 +57,9 @@ transform: transformGrammar.py $(G4FILES) $(BASEFILES)
 	antlr4 -Dlanguage=$($(TARGET)) $(*:Parser=)*.g4
 clean:
 	rm -f dummy $(GENERATED)
+	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 distclean: clean
 	rm -f dummy $(DOWNLOADED)
+	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 parse: $($(PARSER)PARSER) $(PARSE)
 	./$< $($(PARSER)EXAMPLE)
