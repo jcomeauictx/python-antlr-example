@@ -26,8 +26,9 @@ EXAMPLE := $($(PARSER)EXAMPLE)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BASEFILES := $($(PARSER)BASEFILES)
 DOWNLOADED := $(BAKFILES) $(BASEFILES) $(JAVASCRIPTEXAMPLE)
-GENERATED := $(filter-out $(HELLOG4FILES), $(G4FILES)) $(LISTENER)
-GENERATED += $(PARSERS) *.interp *.tokens
+GENERATED := $(filter-out $(HELLOG4FILES) $(MORSEG4FILES), $(G4FILES))
+GENERATED += $(PARSERS) *.interp *.tokens $(LISTENER)
+GENERATED += __pycache__
 HELLOPARSER := helloparser.py
 JAVASCRIPTPARSER := jsparse.py
 MORSEPARSER := morse.py
@@ -67,13 +68,7 @@ $(PARSERS): $(G4FILES) transform
 	antlr4 -Dlanguage=$($(TARGET)) $(filter-out transform, $+)
 clean:
 	rm -rf dummy $(GENERATED) __pycache__
-	if [ "$(PARSER)" != "HELLO" ]; then \
-	 $(MAKE) PARSER=HELLO $@; \
-	elif "$(PARSER)" != "MORSE" ]; then \
-	 $(MAKE) PARSER=MORSE $@; \
-	fi
 distclean: clean
 	rm -f dummy $(DOWNLOADED)
-	if [ "$(PARSER)" != "HELLO" ]; then $(MAKE) PARSER=HELLO $@; fi
 parse: $($(PARSER)PARSER) $(PARSE)
 	./$< $($(PARSER)EXAMPLE)
