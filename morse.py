@@ -7,7 +7,7 @@ https://yetanotherprogrammingblog.medium.com/antlr-with-python-974c756bdb1b
 Some refactoring done by jc
 '''
 import sys, re, logging  # pylint: disable=multiple-imports
-from antlr4 import *
+from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
 from MorseLexer import MorseLexer
 from MorseParser import MorseParser
 from MorseListener import MorseListener
@@ -45,12 +45,11 @@ class MorseToPythonString(MorseListener):
         for child in ctx.getChildren():
             print(NUMBERS[child.symbol.type], end="")
 
-def from_morse(*letters):
+def from_morse(string):
     '''
     translate Morse code to letters and numbers
     '''
-    input_text = ''.join(letters)
-    lexer = MorseLexer(InputStream(input_text))
+    lexer = MorseLexer(InputStream(string))
     stream = CommonTokenStream(lexer)
     parser = MorseParser(stream)
     tree = parser.morse_code()
@@ -59,7 +58,7 @@ def from_morse(*letters):
     walker = ParseTreeWalker()
     walker.walk(MorseToPythonString(), tree)
 
-def to_morse(*args):
+def to_morse(string):
     '''
     translate letters and numbers to Morse code
 
@@ -69,17 +68,18 @@ def to_morse(*args):
     '''
     return None  # let's come back to this later
 
-def dispatch(*args):
+def dispatch(string):
     '''
     send to correct translator
 
     we allow either '-' or '_' for dash
     '''
-    if re.compile(r'^[ \t\r\n._-]+$').match(''.join(args)):
-        logging.debug('translating Morse code to letters and numbers')
-        return from_morse(*[arg.replace('_', '-') for arg in args])
-    logging.debug('translating letters and numbers to Morse code')
-    return to_morse(*args)
+    if re.compile(r'^[ \t\r\n._-]+$').match(string):
+        logging.debug('translating Morse code "%s" to letters and numbers',
+                      string)
+        return from_morse(string.replace('_', '-'))
+    logging.debug('translating letters and numbers "%s" to Morse code', string)
+    return to_morse(string)
 
 if __name__ == '__main__':
-    dispatch(*sys.argv[1:])
+    dispatch(' '.join(sys.argv[1:]))
