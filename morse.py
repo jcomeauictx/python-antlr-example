@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 '''
-Morse code translator by Sumeet, yetanotherprogrammingblog.medium.com
+Morse code translator by Sumeet
+
+https://yetanotherprogrammingblog.medium.com/antlr-with-python-974c756bdb1b
 
 Some refactoring done by jc
 '''
@@ -73,8 +75,10 @@ def dispatch(*args):
 
     we allow either '-' or '_' for dash
     '''
-    if re.compile(r'^[.-_ \t\r\n]$').match(''.join(args)):
+    if re.compile(r'^[ \t\r\n._-]+$').match(''.join(args)):
+        logging.debug('translating Morse code to letters and numbers')
         return from_morse(*[arg.replace('_', '-') for arg in args])
+    logging.debug('translating letters and numbers to Morse code')
     return to_morse(*args)
 
 if __name__ == '__main__':

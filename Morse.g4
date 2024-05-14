@@ -1,9 +1,3 @@
-#!/usr/bin/python
-'''
-Another example from Sumeet's intoductory article
-
-https://yetanotherprogrammingblog.medium.com/antlr-with-python-974c756bdb1b
-'''
 grammar Morse;
 
 // Parser rules
