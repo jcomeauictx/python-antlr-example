@@ -26,9 +26,9 @@ EXAMPLE := $($(PARSER)EXAMPLE)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BASEFILES := $($(PARSER)BASEFILES)
 DOWNLOADED := $(BAKFILES) $(BASEFILES) $(JAVASCRIPTEXAMPLE)
-GENERATED := $(filter-out $(HELLOG4FILES) $(MORSEG4FILES), $(G4FILES))
-GENERATED += $(PARSERS) *.interp *.tokens $(LISTENER)
-GENERATED += __pycache__
+DOWNLOADED := *Parser.g4 *Lexer.g4
+GENERATED := *Parser.py *Lexer.py
+GENERATED += *Listener.py *.interp *.tokens __pycache__
 HELLOPARSER := helloparser.py
 JAVASCRIPTPARSER := jsparse.py
 MORSEPARSER := morse.py
