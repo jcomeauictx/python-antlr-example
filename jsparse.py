@@ -28,13 +28,13 @@ def main(argv):
     tree = parser.program()
     logging.info('walking parse tree')
     ParseTreeWalker.DEFAULT.walk(WriteTreeListener(), tree)
-    logging.info('reconstructed:')
+    logging.info('parse tree:')
     print(tree.toStringTree(recog=parser))
     logging.info('token list')
     input_stream.seek(0)
     lexer = JSL(input_stream)
-    for token in lexer.getAllTokens():
-        logging.info('"%s", %s', token.text, token.type)
+    logging.info('reconstructed:')
+    print(''.join([token.text for token in lexer.getAllTokens()]))
 
 if __name__ == '__main__':
     print("Running")
