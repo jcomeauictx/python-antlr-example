@@ -35,7 +35,7 @@ class MorseToPythonString(MorseListener):
         print('"', end="")
 
     def exitMorse_code(self, ctx:MorseParser.Morse_codeContext):
-        print('"', end="")
+        print('"')
 
     def enterLetter(self, ctx:MorseParser.LetterContext):
         for child in ctx.getChildren():
