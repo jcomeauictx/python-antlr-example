@@ -8,7 +8,7 @@ letter : A | B | C | D | E | F | G | H | I | J | K | L | M |
 
 digit : ZERO | ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN | EIGHT | NINE ;
 
-space: WORDSPACE | SPACE | TAB ;
+space: SENTENCE | WORD | SPACE | TAB ;
 
 // Lexer rules
 A : '.-' ;
@@ -49,6 +49,7 @@ SEVEN : '--...' ;
 EIGHT : '---..' ;
 NINE : '----.' ;
 
-WORDSPACE: SPACE SPACE SPACE | TAB ;
-SPACE: [ ] | [\r\n]+ ;
+SENTENCE : WORD WORD ;
+WORD : SPACE SPACE SPACE | TAB ;
+SPACE : [ ] | [\r\n]+ ;
 TAB : [\t] ;

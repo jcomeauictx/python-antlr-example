@@ -21,7 +21,7 @@ PARSE := $(word 1, $(PARSERS))
 LISTENER := $(G4FILE:.g4=Listener.py)
 JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
 HELLOEXAMPLE ?= Hello $(USER)
-MORSEEXAMPLE ?= .... . .-.. .-.. ---   .__ ___ ._. ._.. _..
+MORSEEXAMPLE ?= .... . .-.. .-.. ---   .__ ___ ._. ._.. _..       # spaces
 EXAMPLE := $($(PARSER)EXAMPLE)
 JAVASCRIPTBASEFILES := $(G4FILES:.g4=Base.py) transformGrammar.py
 BASEFILES := $($(PARSER)BASEFILES)
@@ -71,4 +71,4 @@ clean:
 distclean: clean
 	rm -f dummy $(DOWNLOADED)
 parse: $($(PARSER)PARSER) $(PARSE)
-	./$< $($(PARSER)EXAMPLE)
+	./$< "$($(PARSER)EXAMPLE)"

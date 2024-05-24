@@ -26,6 +26,11 @@ NUMBERS = {
     getattr(MorseParser, NUMBERNAMES[index]): index
     for index in range(len(NUMBERNAMES))
 }
+SEPARATORS = {
+    MorseParser.SENTENCE: '. ',
+    MorseParser.WORD: ' ',
+    MorseParser.SPACE: '',
+}
 class MorseToPythonString(MorseListener):
     '''
     pretty-printer for Morse code translation
@@ -44,6 +49,10 @@ class MorseToPythonString(MorseListener):
     def enterDigit(self, ctx:MorseParser.LetterContext):
         for child in ctx.getChildren():
             print(NUMBERS[child.symbol.type], end="")
+
+    def enterSpace(self, ctx:MorseParser.SpaceContext):
+        for child in ctx.getChildren():
+            print(SEPARATORS[child.symbol.type], end="")
 
 def from_morse(string):
     '''
