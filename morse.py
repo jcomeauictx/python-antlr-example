@@ -27,7 +27,7 @@ NUMBERS = {
     for index in range(len(NUMBERNAMES))
 }
 SEPARATORS = {
-    MorseParser.SENTENCE: '. ',
+    MorseParser.SENTENCE: '.',
     MorseParser.WORD: ' ',
     MorseParser.SPACE: '',
 }
