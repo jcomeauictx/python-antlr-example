@@ -8,7 +8,7 @@ letter : A | B | C | D | E | F | G | H | I | J | K | L | M |
 
 digit : ZERO | ONE | TWO | THREE | FOUR | FIVE | SIX | SEVEN | EIGHT | NINE ;
 
-space: WORDSPACE | LETTERSPACE ;
+space: WORDSPACE | SPACE | TAB ;
 
 // Lexer rules
 A : '.-' ;
@@ -49,5 +49,6 @@ SEVEN : '--...' ;
 EIGHT : '---..' ;
 NINE : '----.' ;
 
-WORDSPACE: [ ]{3,} | [\t] ;
-LETTERSPACE: [ \r\n]+ -> skip ;
+WORDSPACE: SPACE SPACE SPACE | TAB ;
+SPACE: [ ] | [\r\n]+ ;
+TAB : [\t] ;
