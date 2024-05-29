@@ -23,7 +23,7 @@ NUMBERNAMES = [
     'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'
 ]
 NUMBERS = {
-    getattr(MorseParser, NUMBERNAMES[index]): index
+    getattr(MorseParser, NUMBERNAMES[index]): str(index)
     for index in range(len(NUMBERNAMES))
 }
 SEPARATORS = {
@@ -75,7 +75,24 @@ def to_morse(string):
      more easily and simply without it, but the primary purpose is
      to learn the use of ANTLR. just including this for completeness.)
     '''
-    return None  # let's come back to this later
+    string = string.strip('"').lower()  # strip quotes and lowercase all
+    literals = MorseLexer.literalNames
+    symbols = MorseLexer.symbolicNames[:len(literals)]
+    for symbol in symbols:
+        if len(symbol) == 1:
+            symbols[symbols.index(symbol)] = symbol.lower()
+        else:
+            try:
+                symbols[symbols.index(symbol)] = NUMBERS[symbol]
+            except KeyError:  # disregard error on <INVALID>
+                pass
+    translator = dict(zip(symbols, literals))
+    for sentence in string.split('.'):
+        for word in sentence.split():
+            for letter in word:
+                print(translator[letter], end=' ')
+            print('  ', end='')  # extra two spaces at end of word
+        print('   ', end='')  # extra 3 spaces at end of sentence
 
 def dispatch(string):
     '''
