@@ -7,7 +7,7 @@ https://yetanotherprogrammingblog.medium.com/antlr-with-python-974c756bdb1b
 Some refactoring done by jc
 '''
 import sys, re, logging  # pylint: disable=multiple-imports
-from ast import literal_eval as eval
+from ast import literal_eval as eval  # pylint: disable=redefined-builtin
 from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
 from MorseLexer import MorseLexer
 from MorseParser import MorseParser
