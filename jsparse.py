@@ -10,6 +10,7 @@ from antlr4 import FileStream, CommonTokenStream, TerminalNode, \
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 from JavaScriptLexer import JavaScriptLexer as JSL
 from JavaScriptParser import JavaScriptParser as JSP
+from JavaScriptParserListener import JavaScriptParserListener
 
 logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
 
@@ -22,6 +23,13 @@ class WriteTreeListener(ParseTreeListener):
         Shows terminal nodes visited to stderr
         '''
         logging.info("Visit Terminal: %s - %s", node, repr(node))
+
+class DowngradeJavascriptListener(JavaScriptParserListener):
+    '''
+    Subclass listener to change `let` to `var` and other primitivizations
+    '''
+    def exitVariableStatement(self, ctx):
+        logging.info('ctx: %s: %s', ctx, vars(ctx))
 
 def main(filename):
     '''
@@ -44,6 +52,12 @@ def main(filename):
     logging.info('reconstructed:')
     print(''.join([token.text for token in lexer.getAllTokens()]))
     logging.debug(dir(rewriter))
+    # let's do it again, this time to modify the JavaScript
+    stream = CommonTokenStream(lexer)
+    parser = JSP(stream)
+    listener = DowngradeJavascriptListener()
+    tree = parser.program()
+    ParseTreeWalker.DEFAULT.walk(listener, tree)
 
 if __name__ == '__main__':
     main(sys.argv[1])
