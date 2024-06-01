@@ -28,7 +28,24 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
     '''
     Subclass listener to change `let` to `var` and other primitivizations
     '''
+    rewriter = None
+
+    def __init__(self, rewriter):
+        '''
+        associate a TokenStreamRewriter with this listener
+        '''
+        self.rewriter = rewriter
+
     def exitVariableStatement(self, ctx):
+        '''
+        convert `let` and `const` to `var`
+        '''
+        logging.info('ctx: %s: %s', ctx, vars(ctx))
+
+    def exitArrowFunction(self, ctx):
+        '''
+        convert arrow function to old-style `function(){;}`
+        '''
         logging.info('ctx: %s: %s', ctx, vars(ctx))
 
 def main(filename):
@@ -55,9 +72,11 @@ def main(filename):
     # let's do it again, this time to modify the JavaScript
     stream = CommonTokenStream(lexer)
     parser = JSP(stream)
-    listener = DowngradeJavascriptListener()
+    rewriter = TokenStreamRewriter(stream)
+    listener = DowngradeJavascriptListener(rewriter)
     tree = parser.program()
     ParseTreeWalker.DEFAULT.walk(listener, tree)
+    print(listener.rewriter.getText('default', 0, -1))
 
 if __name__ == '__main__':
     main(sys.argv[1])
