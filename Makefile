@@ -60,12 +60,11 @@ ifneq ($(SHOWENV),)
 else
 	$(MAKE) SHOWENV=1 $@
 endif
-transform: $(G4FILES) $(BASEFILES)
-	if [ "$(BASEFILES)" ]; then \
-	 python3 transformGrammar.py; \
-	fi
-$(PARSERS): $(G4FILES) transform
-	antlr4 -Dlanguage=$($(TARGET)) $(filter-out transform, $+)
+# build .bak file only if transformGrammar.py newer than .bak
+%.g4.bak: transformGrammar.py | %.g4
+	python3 $<
+$(PARSERS): $(G4FILES) | $(BAKFILES) $(BASEFILES)
+	antlr4 -Dlanguage=$($(TARGET)) $+
 clean:
 	rm -rf dummy $(GENERATED) __pycache__
 distclean: clean
