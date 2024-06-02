@@ -40,13 +40,13 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         convert `let` and `const` to `var`
         '''
-        logging.info('ctx: %s: %s', ctx, vars(ctx))
+        logging.info('ctx: %s', ctx.getText())
 
     def exitArrowFunction(self, ctx):
         '''
         convert arrow function to old-style `function(){;}`
         '''
-        logging.info('ctx: %s: %s', ctx, vars(ctx))
+        logging.info('ctx: %s', ctx.getText())
 
 def main(filename):
     '''
