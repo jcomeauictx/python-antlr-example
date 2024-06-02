@@ -1,4 +1,4 @@
-# Generated from Java9.g4 by ANTLR 4.7.1
+# Generated from Java9.g4 by ANTLR 4.7.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -2180,7 +2180,7 @@ class Java9Parser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.7.1")
+        self.checkVersion("4.7.2")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -2262,6 +2262,9 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.AnnotationContext,i)
 
+
+        def BOOLEAN(self):
+            return self.getToken(Java9Parser.BOOLEAN, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_primitiveType
@@ -2390,6 +2393,20 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def BYTE(self):
+            return self.getToken(Java9Parser.BYTE, 0)
+
+        def SHORT(self):
+            return self.getToken(Java9Parser.SHORT, 0)
+
+        def INT(self):
+            return self.getToken(Java9Parser.INT, 0)
+
+        def LONG(self):
+            return self.getToken(Java9Parser.LONG, 0)
+
+        def CHAR(self):
+            return self.getToken(Java9Parser.CHAR, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_integralType
@@ -2433,6 +2450,11 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def FLOAT(self):
+            return self.getToken(Java9Parser.FLOAT, 0)
+
+        def DOUBLE(self):
+            return self.getToken(Java9Parser.DOUBLE, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_floatingPointType
@@ -2654,6 +2676,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ClassOrInterfaceTypeContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_classType
 
@@ -2743,6 +2768,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -3138,6 +3166,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
+
         def annotation(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.AnnotationContext)
@@ -3326,6 +3366,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def EXTENDS(self):
+            return self.getToken(Java9Parser.EXTENDS, 0)
+
         def typeVariable(self):
             return self.getTypedRuleContext(Java9Parser.TypeVariableContext,0)
 
@@ -3405,6 +3448,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def BITAND(self):
+            return self.getToken(Java9Parser.BITAND, 0)
+
         def interfaceType(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceTypeContext,0)
 
@@ -3447,9 +3493,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(Java9Parser.LT, 0)
+
         def typeArgumentList(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentListContext,0)
 
+
+        def GT(self):
+            return self.getToken(Java9Parser.GT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeArguments
@@ -3497,6 +3549,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.TypeArgumentContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeArgumentList
@@ -3604,6 +3662,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def QUESTION(self):
+            return self.getToken(Java9Parser.QUESTION, 0)
+
         def annotation(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.AnnotationContext)
@@ -3670,9 +3731,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def EXTENDS(self):
+            return self.getToken(Java9Parser.EXTENDS, 0)
+
         def referenceType(self):
             return self.getTypedRuleContext(Java9Parser.ReferenceTypeContext,0)
 
+
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_wildcardBounds
@@ -3733,6 +3800,9 @@ class Java9Parser ( Parser ):
         def moduleName(self):
             return self.getTypedRuleContext(Java9Parser.ModuleNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_moduleName
@@ -3802,6 +3872,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PackageNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_packageName
 
@@ -3870,6 +3943,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PackageOrTypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_typeName
 
@@ -3929,6 +4005,9 @@ class Java9Parser ( Parser ):
         def packageOrTypeName(self):
             return self.getTypedRuleContext(Java9Parser.PackageOrTypeNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_packageOrTypeName
@@ -3997,6 +4076,9 @@ class Java9Parser ( Parser ):
         def ambiguousName(self):
             return self.getTypedRuleContext(Java9Parser.AmbiguousNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_expressionName
@@ -4096,6 +4178,9 @@ class Java9Parser ( Parser ):
         def ambiguousName(self):
             return self.getTypedRuleContext(Java9Parser.AmbiguousNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_ambiguousName
@@ -4359,9 +4444,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def PACKAGE(self):
+            return self.getToken(Java9Parser.PACKAGE, 0)
+
         def packageName(self):
             return self.getTypedRuleContext(Java9Parser.PackageNameContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def packageModifier(self, i:int=None):
             if i is None:
@@ -4538,9 +4629,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IMPORT(self):
+            return self.getToken(Java9Parser.IMPORT, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_singleTypeImportDeclaration
@@ -4582,9 +4679,21 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IMPORT(self):
+            return self.getToken(Java9Parser.IMPORT, 0)
+
         def packageOrTypeName(self):
             return self.getTypedRuleContext(Java9Parser.PackageOrTypeNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def MUL(self):
+            return self.getToken(Java9Parser.MUL, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeImportOnDemandDeclaration
@@ -4630,12 +4739,24 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IMPORT(self):
+            return self.getToken(Java9Parser.IMPORT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_singleStaticImportDeclaration
@@ -4683,9 +4804,24 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IMPORT(self):
+            return self.getToken(Java9Parser.IMPORT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def MUL(self):
+            return self.getToken(Java9Parser.MUL, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_staticImportOnDemandDeclaration
@@ -4740,6 +4876,9 @@ class Java9Parser ( Parser ):
         def interfaceDeclaration(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeDeclaration
@@ -4799,6 +4938,12 @@ class Java9Parser ( Parser ):
         def moduleName(self):
             return self.getTypedRuleContext(Java9Parser.ModuleNameContext,0)
 
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def annotation(self, i:int=None):
             if i is None:
@@ -4892,6 +5037,9 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.ModuleNameContext,i)
 
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def requiresModifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.RequiresModifierContext)
@@ -4902,6 +5050,12 @@ class Java9Parser ( Parser ):
         def packageName(self):
             return self.getTypedRuleContext(Java9Parser.PackageNameContext,0)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def typeName(self, i:int=None):
             if i is None:
@@ -5065,6 +5219,8 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_requiresModifier
@@ -5164,6 +5320,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def CLASS(self):
+            return self.getToken(Java9Parser.CLASS, 0)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -5270,6 +5429,27 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PROTECTED(self):
+            return self.getToken(Java9Parser.PROTECTED, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
+        def ABSTRACT(self):
+            return self.getToken(Java9Parser.ABSTRACT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def FINAL(self):
+            return self.getToken(Java9Parser.FINAL, 0)
+
+        def STRICTFP(self):
+            return self.getToken(Java9Parser.STRICTFP, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_classModifier
 
@@ -5349,9 +5529,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LT(self):
+            return self.getToken(Java9Parser.LT, 0)
+
         def typeParameterList(self):
             return self.getTypedRuleContext(Java9Parser.TypeParameterListContext,0)
 
+
+        def GT(self):
+            return self.getToken(Java9Parser.GT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeParameters
@@ -5399,6 +5585,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.TypeParameterContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_typeParameterList
@@ -5449,6 +5641,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def EXTENDS(self):
+            return self.getToken(Java9Parser.EXTENDS, 0)
+
         def classType(self):
             return self.getTypedRuleContext(Java9Parser.ClassTypeContext,0)
 
@@ -5490,6 +5685,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def IMPLEMENTS(self):
+            return self.getToken(Java9Parser.IMPLEMENTS, 0)
 
         def interfaceTypeList(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceTypeListContext,0)
@@ -5540,6 +5738,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.InterfaceTypeContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_interfaceTypeList
 
@@ -5588,6 +5792,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def classBodyDeclaration(self, i:int=None):
             if i is None:
@@ -5738,6 +5948,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.InterfaceDeclarationContext,0)
 
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_classMemberDeclaration
 
@@ -5813,6 +6026,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorListContext,0)
 
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def fieldModifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.FieldModifierContext)
@@ -5874,6 +6090,27 @@ class Java9Parser ( Parser ):
         def annotation(self):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
+
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PROTECTED(self):
+            return self.getToken(Java9Parser.PROTECTED, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def FINAL(self):
+            return self.getToken(Java9Parser.FINAL, 0)
+
+        def TRANSIENT(self):
+            return self.getToken(Java9Parser.TRANSIENT, 0)
+
+        def VOLATILE(self):
+            return self.getToken(Java9Parser.VOLATILE, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_fieldModifier
@@ -5961,6 +6198,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.VariableDeclaratorContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_variableDeclaratorList
 
@@ -6013,6 +6256,9 @@ class Java9Parser ( Parser ):
         def variableDeclaratorId(self):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorIdContext,0)
 
+
+        def ASSIGN(self):
+            return self.getToken(Java9Parser.ASSIGN, 0)
 
         def variableInitializer(self):
             return self.getTypedRuleContext(Java9Parser.VariableInitializerContext,0)
@@ -6235,6 +6481,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.NumericTypeContext,0)
 
 
+        def BOOLEAN(self):
+            return self.getToken(Java9Parser.BOOLEAN, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_unannPrimitiveType
 
@@ -6455,6 +6704,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.UnannClassOrInterfaceTypeContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def annotation(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.AnnotationContext)
@@ -6541,6 +6793,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -6969,6 +7224,33 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PROTECTED(self):
+            return self.getToken(Java9Parser.PROTECTED, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
+        def ABSTRACT(self):
+            return self.getToken(Java9Parser.ABSTRACT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def FINAL(self):
+            return self.getToken(Java9Parser.FINAL, 0)
+
+        def SYNCHRONIZED(self):
+            return self.getToken(Java9Parser.SYNCHRONIZED, 0)
+
+        def NATIVE(self):
+            return self.getToken(Java9Parser.NATIVE, 0)
+
+        def STRICTFP(self):
+            return self.getToken(Java9Parser.STRICTFP, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_methodModifier
 
@@ -7167,6 +7449,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.UnannTypeContext,0)
 
 
+        def VOID(self):
+            return self.getToken(Java9Parser.VOID, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_result
 
@@ -7218,6 +7503,12 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def formalParameterList(self):
             return self.getTypedRuleContext(Java9Parser.FormalParameterListContext,0)
@@ -7287,6 +7578,9 @@ class Java9Parser ( Parser ):
         def formalParameters(self):
             return self.getTypedRuleContext(Java9Parser.FormalParametersContext,0)
 
+
+        def COMMA(self):
+            return self.getToken(Java9Parser.COMMA, 0)
 
         def lastFormalParameter(self):
             return self.getTypedRuleContext(Java9Parser.LastFormalParameterContext,0)
@@ -7361,6 +7655,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.FormalParameterContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def receiverParameter(self):
             return self.getTypedRuleContext(Java9Parser.ReceiverParameterContext,0)
@@ -7509,6 +7809,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def FINAL(self):
+            return self.getToken(Java9Parser.FINAL, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_variableModifier
 
@@ -7561,6 +7864,9 @@ class Java9Parser ( Parser ):
         def unannType(self):
             return self.getTypedRuleContext(Java9Parser.UnannTypeContext,0)
 
+
+        def ELLIPSIS(self):
+            return self.getToken(Java9Parser.ELLIPSIS, 0)
 
         def variableDeclaratorId(self):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorIdContext,0)
@@ -7662,6 +7968,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.UnannTypeContext,0)
 
 
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
         def annotation(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.AnnotationContext)
@@ -7671,6 +7980,9 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_receiverParameter
@@ -7731,6 +8043,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def THROWS(self):
+            return self.getToken(Java9Parser.THROWS, 0)
+
         def exceptionTypeList(self):
             return self.getTypedRuleContext(Java9Parser.ExceptionTypeListContext,0)
 
@@ -7779,6 +8094,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.ExceptionTypeContext,i)
 
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_exceptionTypeList
@@ -7890,6 +8211,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
 
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_methodBody
 
@@ -7978,6 +8302,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
 
         def block(self):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
@@ -8101,6 +8428,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PROTECTED(self):
+            return self.getToken(Java9Parser.PROTECTED, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_constructorModifier
 
@@ -8163,6 +8499,12 @@ class Java9Parser ( Parser ):
         def simpleTypeName(self):
             return self.getTypedRuleContext(Java9Parser.SimpleTypeNameContext,0)
 
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def typeParameters(self):
             return self.getTypedRuleContext(Java9Parser.TypeParametersContext,0)
@@ -8268,6 +8610,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
+
         def explicitConstructorInvocation(self):
             return self.getTypedRuleContext(Java9Parser.ExplicitConstructorInvocationContext,0)
 
@@ -8331,6 +8679,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def typeArguments(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
 
@@ -8339,9 +8699,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ArgumentListContext,0)
 
 
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
+
         def expressionName(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
+
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
 
         def primary(self):
             return self.getTypedRuleContext(Java9Parser.PrimaryContext,0)
@@ -8505,6 +8871,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def ENUM(self):
+            return self.getToken(Java9Parser.ENUM, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -8582,9 +8951,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
+
         def enumConstantList(self):
             return self.getTypedRuleContext(Java9Parser.EnumConstantListContext,0)
 
+
+        def COMMA(self):
+            return self.getToken(Java9Parser.COMMA, 0)
 
         def enumBodyDeclarations(self):
             return self.getTypedRuleContext(Java9Parser.EnumBodyDeclarationsContext,0)
@@ -8660,6 +9038,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.EnumConstantContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_enumConstantList
 
@@ -8718,6 +9102,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.EnumConstantModifierContext,i)
 
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def classBody(self):
             return self.getTypedRuleContext(Java9Parser.ClassBodyContext,0)
@@ -8840,6 +9230,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def classBodyDeclaration(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ClassBodyDeclarationContext)
@@ -8951,6 +9344,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def INTERFACE(self):
+            return self.getToken(Java9Parser.INTERFACE, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -9044,6 +9440,24 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PROTECTED(self):
+            return self.getToken(Java9Parser.PROTECTED, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
+        def ABSTRACT(self):
+            return self.getToken(Java9Parser.ABSTRACT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def STRICTFP(self):
+            return self.getToken(Java9Parser.STRICTFP, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_interfaceModifier
 
@@ -9118,6 +9532,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def EXTENDS(self):
+            return self.getToken(Java9Parser.EXTENDS, 0)
+
         def interfaceTypeList(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceTypeListContext,0)
 
@@ -9159,6 +9576,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def interfaceMemberDeclaration(self, i:int=None):
             if i is None:
@@ -9231,6 +9654,9 @@ class Java9Parser ( Parser ):
         def interfaceDeclaration(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_interfaceMemberDeclaration
@@ -9307,6 +9733,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorListContext,0)
 
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def constantModifier(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ConstantModifierContext)
@@ -9368,6 +9797,15 @@ class Java9Parser ( Parser ):
         def annotation(self):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
+
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def FINAL(self):
+            return self.getToken(Java9Parser.FINAL, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_constantModifier
@@ -9496,6 +9934,24 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def PRIVATE(self):
+            return self.getToken(Java9Parser.PRIVATE, 0)
+
+        def ABSTRACT(self):
+            return self.getToken(Java9Parser.ABSTRACT, 0)
+
+        def DEFAULT(self):
+            return self.getToken(Java9Parser.DEFAULT, 0)
+
+        def STATIC(self):
+            return self.getToken(Java9Parser.STATIC, 0)
+
+        def STRICTFP(self):
+            return self.getToken(Java9Parser.STRICTFP, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_interfaceMethodModifier
 
@@ -9570,6 +10026,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AT(self):
+            return self.getToken(Java9Parser.AT, 0)
+
+        def INTERFACE(self):
+            return self.getToken(Java9Parser.INTERFACE, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -9636,6 +10098,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def annotationTypeMemberDeclaration(self, i:int=None):
             if i is None:
@@ -9708,6 +10176,9 @@ class Java9Parser ( Parser ):
         def interfaceDeclaration(self):
             return self.getTypedRuleContext(Java9Parser.InterfaceDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_annotationTypeMemberDeclaration
@@ -9782,6 +10253,15 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def annotationTypeElementModifier(self, i:int=None):
             if i is None:
@@ -9873,6 +10353,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AnnotationContext,0)
 
 
+        def PUBLIC(self):
+            return self.getToken(Java9Parser.PUBLIC, 0)
+
+        def ABSTRACT(self):
+            return self.getToken(Java9Parser.ABSTRACT, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_annotationTypeElementModifier
 
@@ -9926,6 +10412,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def DEFAULT(self):
+            return self.getToken(Java9Parser.DEFAULT, 0)
 
         def elementValue(self):
             return self.getTypedRuleContext(Java9Parser.ElementValueContext,0)
@@ -10036,9 +10525,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AT(self):
+            return self.getToken(Java9Parser.AT, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def elementValuePairList(self):
             return self.getTypedRuleContext(Java9Parser.ElementValuePairListContext,0)
@@ -10102,6 +10600,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.ElementValuePairContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_elementValuePairList
 
@@ -10153,6 +10657,9 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def ASSIGN(self):
+            return self.getToken(Java9Parser.ASSIGN, 0)
 
         def elementValue(self):
             return self.getTypedRuleContext(Java9Parser.ElementValueContext,0)
@@ -10265,9 +10772,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
+
         def elementValueList(self):
             return self.getTypedRuleContext(Java9Parser.ElementValueListContext,0)
 
+
+        def COMMA(self):
+            return self.getToken(Java9Parser.COMMA, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_elementValueArrayInitializer
@@ -10331,6 +10847,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.ElementValueContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_elementValueList
 
@@ -10380,6 +10902,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AT(self):
+            return self.getToken(Java9Parser.AT, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
@@ -10422,13 +10947,22 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def AT(self):
+            return self.getToken(Java9Parser.AT, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def elementValue(self):
             return self.getTypedRuleContext(Java9Parser.ElementValueContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_singleElementAnnotation
@@ -10474,9 +11008,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
+
         def variableInitializerList(self):
             return self.getTypedRuleContext(Java9Parser.VariableInitializerListContext,0)
 
+
+        def COMMA(self):
+            return self.getToken(Java9Parser.COMMA, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_arrayInitializer
@@ -10540,6 +11083,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.VariableInitializerContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_variableInitializerList
 
@@ -10588,6 +11137,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def blockStatements(self):
             return self.getTypedRuleContext(Java9Parser.BlockStatementsContext,0)
@@ -10764,6 +11319,9 @@ class Java9Parser ( Parser ):
         def localVariableDeclaration(self):
             return self.getTypedRuleContext(Java9Parser.LocalVariableDeclarationContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_localVariableDeclarationStatement
@@ -11198,6 +11756,8 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_emptyStatement
@@ -11237,6 +11797,9 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
 
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
@@ -11285,6 +11848,9 @@ class Java9Parser ( Parser ):
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
+
         def statementNoShortIf(self):
             return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,0)
 
@@ -11332,6 +11898,9 @@ class Java9Parser ( Parser ):
         def statementExpression(self):
             return self.getTypedRuleContext(Java9Parser.StatementExpressionContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_expressionStatement
@@ -11478,9 +12047,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IF(self):
+            return self.getToken(Java9Parser.IF, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
@@ -11530,13 +12108,25 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IF(self):
+            return self.getToken(Java9Parser.IF, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
 
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
         def statementNoShortIf(self):
             return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,0)
 
+
+        def ELSE(self):
+            return self.getToken(Java9Parser.ELSE, 0)
 
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
@@ -11590,9 +12180,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def IF(self):
+            return self.getToken(Java9Parser.IF, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statementNoShortIf(self, i:int=None):
             if i is None:
@@ -11600,6 +12199,9 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,i)
 
+
+        def ELSE(self):
+            return self.getToken(Java9Parser.ELSE, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_ifThenElseStatementNoShortIf
@@ -11649,12 +12251,21 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def ASSERT(self):
+            return self.getToken(Java9Parser.ASSERT, 0)
+
         def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ExpressionContext)
             else:
                 return self.getTypedRuleContext(Java9Parser.ExpressionContext,i)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_assertStatement
@@ -11717,9 +12328,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SWITCH(self):
+            return self.getToken(Java9Parser.SWITCH, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def switchBlock(self):
             return self.getTypedRuleContext(Java9Parser.SwitchBlockContext,0)
@@ -11768,6 +12388,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def LBRACE(self):
+            return self.getToken(Java9Parser.LBRACE, 0)
+
+        def RBRACE(self):
+            return self.getToken(Java9Parser.RBRACE, 0)
 
         def switchBlockStatementGroup(self, i:int=None):
             if i is None:
@@ -11943,13 +12569,22 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def CASE(self):
+            return self.getToken(Java9Parser.CASE, 0)
+
         def constantExpression(self):
             return self.getTypedRuleContext(Java9Parser.ConstantExpressionContext,0)
 
 
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
+
         def enumConstantName(self):
             return self.getTypedRuleContext(Java9Parser.EnumConstantNameContext,0)
 
+
+        def DEFAULT(self):
+            return self.getToken(Java9Parser.DEFAULT, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_switchLabel
@@ -12055,9 +12690,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def WHILE(self):
+            return self.getToken(Java9Parser.WHILE, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
@@ -12107,9 +12751,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def WHILE(self):
+            return self.getToken(Java9Parser.WHILE, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statementNoShortIf(self):
             return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,0)
@@ -12159,13 +12812,28 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DO(self):
+            return self.getToken(Java9Parser.DO, 0)
+
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
 
 
+        def WHILE(self):
+            return self.getToken(Java9Parser.WHILE, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_doStatement
@@ -12329,6 +12997,21 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def FOR(self):
+            return self.getToken(Java9Parser.FOR, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def SEMI(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.SEMI)
+            else:
+                return self.getToken(Java9Parser.SEMI, i)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
 
@@ -12415,6 +13098,21 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def FOR(self):
+            return self.getToken(Java9Parser.FOR, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def SEMI(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.SEMI)
+            else:
+                return self.getToken(Java9Parser.SEMI, i)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statementNoShortIf(self):
             return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,0)
@@ -12607,6 +13305,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.StatementExpressionContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_statementExpressionList
 
@@ -12656,6 +13360,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def FOR(self):
+            return self.getToken(Java9Parser.FOR, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def unannType(self):
             return self.getTypedRuleContext(Java9Parser.UnannTypeContext,0)
 
@@ -12664,9 +13374,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorIdContext,0)
 
 
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statement(self):
             return self.getTypedRuleContext(Java9Parser.StatementContext,0)
@@ -12740,6 +13456,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def FOR(self):
+            return self.getToken(Java9Parser.FOR, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def unannType(self):
             return self.getTypedRuleContext(Java9Parser.UnannTypeContext,0)
 
@@ -12748,9 +13470,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorIdContext,0)
 
 
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def statementNoShortIf(self):
             return self.getTypedRuleContext(Java9Parser.StatementNoShortIfContext,0)
@@ -12824,6 +13552,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def BREAK(self):
+            return self.getToken(Java9Parser.BREAK, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -12874,6 +13608,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def CONTINUE(self):
+            return self.getToken(Java9Parser.CONTINUE, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -12923,6 +13663,12 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def RETURN(self):
+            return self.getToken(Java9Parser.RETURN, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
@@ -12975,9 +13721,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def THROW(self):
+            return self.getToken(Java9Parser.THROW, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_throwStatement
@@ -13019,9 +13771,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def SYNCHRONIZED(self):
+            return self.getToken(Java9Parser.SYNCHRONIZED, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def block(self):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
@@ -13070,6 +13831,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def TRY(self):
+            return self.getToken(Java9Parser.TRY, 0)
 
         def block(self):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
@@ -13213,9 +13977,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def CATCH(self):
+            return self.getToken(Java9Parser.CATCH, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def catchFormalParameter(self):
             return self.getTypedRuleContext(Java9Parser.CatchFormalParameterContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def block(self):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
@@ -13333,6 +14106,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.UnannClassTypeContext,0)
 
 
+        def BITOR(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.BITOR)
+            else:
+                return self.getToken(Java9Parser.BITOR, i)
+
         def classType(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ClassTypeContext)
@@ -13389,6 +14168,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def FINALLY(self):
+            return self.getToken(Java9Parser.FINALLY, 0)
+
         def block(self):
             return self.getTypedRuleContext(Java9Parser.BlockContext,0)
 
@@ -13430,6 +14212,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def TRY(self):
+            return self.getToken(Java9Parser.TRY, 0)
 
         def resourceSpecification(self):
             return self.getTypedRuleContext(Java9Parser.ResourceSpecificationContext,0)
@@ -13504,9 +14289,18 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def resourceList(self):
             return self.getTypedRuleContext(Java9Parser.ResourceListContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
+        def SEMI(self):
+            return self.getToken(Java9Parser.SEMI, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_resourceSpecification
@@ -13564,6 +14358,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.ResourceContext,i)
 
 
+        def SEMI(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.SEMI)
+            else:
+                return self.getToken(Java9Parser.SEMI, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_resourceList
 
@@ -13620,6 +14420,9 @@ class Java9Parser ( Parser ):
         def variableDeclaratorId(self):
             return self.getTypedRuleContext(Java9Parser.VariableDeclaratorIdContext,0)
 
+
+        def ASSIGN(self):
+            return self.getToken(Java9Parser.ASSIGN, 0)
 
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
@@ -13841,13 +14644,25 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ClassLiteralContext,0)
 
 
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def classInstanceCreationExpression(self):
             return self.getTypedRuleContext(Java9Parser.ClassInstanceCreationExpressionContext,0)
@@ -14018,9 +14833,39 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def CLASS(self):
+            return self.getToken(Java9Parser.CLASS, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
+
+        def VOID(self):
+            return self.getToken(Java9Parser.VOID, 0)
+
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def classInstanceCreationExpression(self):
             return self.getTypedRuleContext(Java9Parser.ClassInstanceCreationExpressionContext,0)
@@ -14372,13 +15217,43 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def CLASS(self):
+            return self.getToken(Java9Parser.CLASS, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
+
         def unannPrimitiveType(self):
             return self.getTypedRuleContext(Java9Parser.UnannPrimitiveTypeContext,0)
 
 
+        def VOID(self):
+            return self.getToken(Java9Parser.VOID, 0)
+
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def classInstanceCreationExpression_lfno_primary(self):
             return self.getTypedRuleContext(Java9Parser.ClassInstanceCreationExpression_lfno_primaryContext,0)
@@ -14598,13 +15473,43 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def CLASS(self):
+            return self.getToken(Java9Parser.CLASS, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
+
         def unannPrimitiveType(self):
             return self.getTypedRuleContext(Java9Parser.UnannPrimitiveTypeContext,0)
 
 
+        def VOID(self):
+            return self.getToken(Java9Parser.VOID, 0)
+
+        def THIS(self):
+            return self.getToken(Java9Parser.THIS, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def classInstanceCreationExpression_lfno_primary(self):
             return self.getTypedRuleContext(Java9Parser.ClassInstanceCreationExpression_lfno_primaryContext,0)
@@ -14770,6 +15675,12 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def CLASS(self):
+            return self.getToken(Java9Parser.CLASS, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
@@ -14777,6 +15688,24 @@ class Java9Parser ( Parser ):
         def numericType(self):
             return self.getTypedRuleContext(Java9Parser.NumericTypeContext,0)
 
+
+        def BOOLEAN(self):
+            return self.getToken(Java9Parser.BOOLEAN, 0)
+
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
+
+        def VOID(self):
+            return self.getToken(Java9Parser.VOID, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_classLiteral
@@ -14864,11 +15793,20 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
+
         def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(Java9Parser.Identifier)
             else:
                 return self.getToken(Java9Parser.Identifier, i)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def typeArguments(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
@@ -14880,6 +15818,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.AnnotationContext,i)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
 
         def typeArgumentsOrDiamond(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsOrDiamondContext,0)
@@ -15131,8 +16075,20 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def typeArguments(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
@@ -15244,11 +16200,20 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
+
         def Identifier(self, i:int=None):
             if i is None:
                 return self.getTokens(Java9Parser.Identifier)
             else:
                 return self.getToken(Java9Parser.Identifier, i)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def typeArguments(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
@@ -15260,6 +16225,12 @@ class Java9Parser ( Parser ):
             else:
                 return self.getTypedRuleContext(Java9Parser.AnnotationContext,i)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
 
         def typeArgumentsOrDiamond(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsOrDiamondContext,0)
@@ -15453,6 +16424,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
 
 
+        def LT(self):
+            return self.getToken(Java9Parser.LT, 0)
+
+        def GT(self):
+            return self.getToken(Java9Parser.GT, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_typeArgumentsOrDiamond
 
@@ -15508,8 +16485,17 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PrimaryContext,0)
 
 
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
 
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
@@ -15586,6 +16572,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -15626,6 +16615,15 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -15699,12 +16697,24 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
 
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
         def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ExpressionContext)
             else:
                 return self.getTypedRuleContext(Java9Parser.ExpressionContext,i)
 
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
 
         def primaryNoNewArray_lfno_arrayAccess(self):
             return self.getTypedRuleContext(Java9Parser.PrimaryNoNewArray_lfno_arrayAccessContext,0)
@@ -15798,12 +16808,24 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext,0)
 
 
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
         def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ExpressionContext)
             else:
                 return self.getTypedRuleContext(Java9Parser.ExpressionContext,i)
 
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
 
         def primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary(self, i:int=None):
             if i is None:
@@ -15875,12 +16897,24 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
 
+        def LBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LBRACK)
+            else:
+                return self.getToken(Java9Parser.LBRACK, i)
+
         def expression(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(Java9Parser.ExpressionContext)
             else:
                 return self.getTypedRuleContext(Java9Parser.ExpressionContext,i)
 
+
+        def RBRACK(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.RBRACK)
+            else:
+                return self.getToken(Java9Parser.RBRACK, i)
 
         def primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary(self):
             return self.getTypedRuleContext(Java9Parser.PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext,0)
@@ -15974,6 +17008,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.MethodNameContext,0)
 
 
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
         def argumentList(self):
             return self.getTypedRuleContext(Java9Parser.ArgumentListContext,0)
 
@@ -15981,6 +17021,12 @@ class Java9Parser ( Parser ):
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -15996,6 +17042,9 @@ class Java9Parser ( Parser ):
         def primary(self):
             return self.getTypedRuleContext(Java9Parser.PrimaryContext,0)
 
+
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_methodInvocation
@@ -16207,8 +17256,17 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def typeArguments(self):
             return self.getTypedRuleContext(Java9Parser.TypeArgumentsContext,0)
@@ -16281,6 +17339,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.MethodNameContext,0)
 
 
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
+
         def argumentList(self):
             return self.getTypedRuleContext(Java9Parser.ArgumentListContext,0)
 
@@ -16288,6 +17352,12 @@ class Java9Parser ( Parser ):
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
+
+        def DOT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.DOT)
+            else:
+                return self.getToken(Java9Parser.DOT, i)
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
@@ -16299,6 +17369,9 @@ class Java9Parser ( Parser ):
         def expressionName(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
+
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_methodInvocation_lfno_primary
@@ -16487,6 +17560,12 @@ class Java9Parser ( Parser ):
                 return self.getTypedRuleContext(Java9Parser.ExpressionContext,i)
 
 
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_argumentList
 
@@ -16540,6 +17619,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
 
+        def COLONCOLON(self):
+            return self.getToken(Java9Parser.COLONCOLON, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -16555,13 +17637,22 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PrimaryContext,0)
 
 
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def classType(self):
             return self.getTypedRuleContext(Java9Parser.ClassTypeContext,0)
 
+
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
 
         def arrayType(self):
             return self.getTypedRuleContext(Java9Parser.ArrayTypeContext,0)
@@ -16727,6 +17818,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def COLONCOLON(self):
+            return self.getToken(Java9Parser.COLONCOLON, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -16785,6 +17879,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ExpressionNameContext,0)
 
 
+        def COLONCOLON(self):
+            return self.getToken(Java9Parser.COLONCOLON, 0)
+
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
 
@@ -16796,13 +17893,22 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ReferenceTypeContext,0)
 
 
+        def SUPER(self):
+            return self.getToken(Java9Parser.SUPER, 0)
+
         def typeName(self):
             return self.getTypedRuleContext(Java9Parser.TypeNameContext,0)
 
 
+        def DOT(self):
+            return self.getToken(Java9Parser.DOT, 0)
+
         def classType(self):
             return self.getTypedRuleContext(Java9Parser.ClassTypeContext,0)
 
+
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
 
         def arrayType(self):
             return self.getTypedRuleContext(Java9Parser.ArrayTypeContext,0)
@@ -16949,6 +18055,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def NEW(self):
+            return self.getToken(Java9Parser.NEW, 0)
 
         def primitiveType(self):
             return self.getTypedRuleContext(Java9Parser.PrimitiveTypeContext,0)
@@ -17122,9 +18231,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LBRACK(self):
+            return self.getToken(Java9Parser.LBRACK, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def RBRACK(self):
+            return self.getToken(Java9Parser.RBRACK, 0)
 
         def annotation(self, i:int=None):
             if i is None:
@@ -17285,6 +18400,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.LambdaParametersContext,0)
 
 
+        def ARROW(self):
+            return self.getToken(Java9Parser.ARROW, 0)
+
         def lambdaBody(self):
             return self.getTypedRuleContext(Java9Parser.LambdaBodyContext,0)
 
@@ -17331,6 +18449,12 @@ class Java9Parser ( Parser ):
 
         def Identifier(self):
             return self.getToken(Java9Parser.Identifier, 0)
+
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def formalParameterList(self):
             return self.getTypedRuleContext(Java9Parser.FormalParameterListContext,0)
@@ -17415,6 +18539,12 @@ class Java9Parser ( Parser ):
                 return self.getTokens(Java9Parser.Identifier)
             else:
                 return self.getToken(Java9Parser.Identifier, i)
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.COMMA)
+            else:
+                return self.getToken(Java9Parser.COMMA, i)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_inferredFormalParameterList
@@ -17698,6 +18828,41 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def ASSIGN(self):
+            return self.getToken(Java9Parser.ASSIGN, 0)
+
+        def MUL_ASSIGN(self):
+            return self.getToken(Java9Parser.MUL_ASSIGN, 0)
+
+        def DIV_ASSIGN(self):
+            return self.getToken(Java9Parser.DIV_ASSIGN, 0)
+
+        def MOD_ASSIGN(self):
+            return self.getToken(Java9Parser.MOD_ASSIGN, 0)
+
+        def ADD_ASSIGN(self):
+            return self.getToken(Java9Parser.ADD_ASSIGN, 0)
+
+        def SUB_ASSIGN(self):
+            return self.getToken(Java9Parser.SUB_ASSIGN, 0)
+
+        def LSHIFT_ASSIGN(self):
+            return self.getToken(Java9Parser.LSHIFT_ASSIGN, 0)
+
+        def RSHIFT_ASSIGN(self):
+            return self.getToken(Java9Parser.RSHIFT_ASSIGN, 0)
+
+        def URSHIFT_ASSIGN(self):
+            return self.getToken(Java9Parser.URSHIFT_ASSIGN, 0)
+
+        def AND_ASSIGN(self):
+            return self.getToken(Java9Parser.AND_ASSIGN, 0)
+
+        def XOR_ASSIGN(self):
+            return self.getToken(Java9Parser.XOR_ASSIGN, 0)
+
+        def OR_ASSIGN(self):
+            return self.getToken(Java9Parser.OR_ASSIGN, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_assignmentOperator
@@ -17745,9 +18910,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ConditionalOrExpressionContext,0)
 
 
+        def QUESTION(self):
+            return self.getToken(Java9Parser.QUESTION, 0)
+
         def expression(self):
             return self.getTypedRuleContext(Java9Parser.ExpressionContext,0)
 
+
+        def COLON(self):
+            return self.getToken(Java9Parser.COLON, 0)
 
         def conditionalExpression(self):
             return self.getTypedRuleContext(Java9Parser.ConditionalExpressionContext,0)
@@ -17834,6 +19005,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ConditionalOrExpressionContext,0)
 
 
+        def OR(self):
+            return self.getToken(Java9Parser.OR, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_conditionalOrExpression
 
@@ -17902,6 +19076,9 @@ class Java9Parser ( Parser ):
         def conditionalAndExpression(self):
             return self.getTypedRuleContext(Java9Parser.ConditionalAndExpressionContext,0)
 
+
+        def AND(self):
+            return self.getToken(Java9Parser.AND, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_conditionalAndExpression
@@ -17972,6 +19149,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.InclusiveOrExpressionContext,0)
 
 
+        def BITOR(self):
+            return self.getToken(Java9Parser.BITOR, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_inclusiveOrExpression
 
@@ -18040,6 +19220,9 @@ class Java9Parser ( Parser ):
         def exclusiveOrExpression(self):
             return self.getTypedRuleContext(Java9Parser.ExclusiveOrExpressionContext,0)
 
+
+        def CARET(self):
+            return self.getToken(Java9Parser.CARET, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_exclusiveOrExpression
@@ -18110,6 +19293,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AndExpressionContext,0)
 
 
+        def BITAND(self):
+            return self.getToken(Java9Parser.BITAND, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_andExpression
 
@@ -18178,6 +19364,12 @@ class Java9Parser ( Parser ):
         def equalityExpression(self):
             return self.getTypedRuleContext(Java9Parser.EqualityExpressionContext,0)
 
+
+        def EQUAL(self):
+            return self.getToken(Java9Parser.EQUAL, 0)
+
+        def NOTEQUAL(self):
+            return self.getToken(Java9Parser.NOTEQUAL, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_equalityExpression
@@ -18267,6 +19459,21 @@ class Java9Parser ( Parser ):
         def relationalExpression(self):
             return self.getTypedRuleContext(Java9Parser.RelationalExpressionContext,0)
 
+
+        def LT(self):
+            return self.getToken(Java9Parser.LT, 0)
+
+        def GT(self):
+            return self.getToken(Java9Parser.GT, 0)
+
+        def LE(self):
+            return self.getToken(Java9Parser.LE, 0)
+
+        def GE(self):
+            return self.getToken(Java9Parser.GE, 0)
+
+        def INSTANCEOF(self):
+            return self.getToken(Java9Parser.INSTANCEOF, 0)
 
         def referenceType(self):
             return self.getTypedRuleContext(Java9Parser.ReferenceTypeContext,0)
@@ -18400,6 +19607,18 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.ShiftExpressionContext,0)
 
 
+        def LT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.LT)
+            else:
+                return self.getToken(Java9Parser.LT, i)
+
+        def GT(self, i:int=None):
+            if i is None:
+                return self.getTokens(Java9Parser.GT)
+            else:
+                return self.getToken(Java9Parser.GT, i)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_shiftExpression
 
@@ -18510,6 +19729,12 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.AdditiveExpressionContext,0)
 
 
+        def ADD(self):
+            return self.getToken(Java9Parser.ADD, 0)
+
+        def SUB(self):
+            return self.getToken(Java9Parser.SUB, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_additiveExpression
 
@@ -18598,6 +19823,15 @@ class Java9Parser ( Parser ):
         def multiplicativeExpression(self):
             return self.getTypedRuleContext(Java9Parser.MultiplicativeExpressionContext,0)
 
+
+        def MUL(self):
+            return self.getToken(Java9Parser.MUL, 0)
+
+        def DIV(self):
+            return self.getToken(Java9Parser.DIV, 0)
+
+        def MOD(self):
+            return self.getToken(Java9Parser.MOD, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_multiplicativeExpression
@@ -18701,9 +19935,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PreDecrementExpressionContext,0)
 
 
+        def ADD(self):
+            return self.getToken(Java9Parser.ADD, 0)
+
         def unaryExpression(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionContext,0)
 
+
+        def SUB(self):
+            return self.getToken(Java9Parser.SUB, 0)
 
         def unaryExpressionNotPlusMinus(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionNotPlusMinusContext,0)
@@ -18777,6 +20017,9 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def INC(self):
+            return self.getToken(Java9Parser.INC, 0)
+
         def unaryExpression(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionContext,0)
 
@@ -18818,6 +20061,9 @@ class Java9Parser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+
+        def DEC(self):
+            return self.getToken(Java9Parser.DEC, 0)
 
         def unaryExpression(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionContext,0)
@@ -18865,9 +20111,15 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PostfixExpressionContext,0)
 
 
+        def TILDE(self):
+            return self.getToken(Java9Parser.TILDE, 0)
+
         def unaryExpression(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionContext,0)
 
+
+        def BANG(self):
+            return self.getToken(Java9Parser.BANG, 0)
 
         def castExpression(self):
             return self.getTypedRuleContext(Java9Parser.CastExpressionContext,0)
@@ -19035,6 +20287,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PostfixExpressionContext,0)
 
 
+        def INC(self):
+            return self.getToken(Java9Parser.INC, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_postIncrementExpression
 
@@ -19073,6 +20328,8 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def INC(self):
+            return self.getToken(Java9Parser.INC, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_postIncrementExpression_lf_postfixExpression
@@ -19114,6 +20371,9 @@ class Java9Parser ( Parser ):
             return self.getTypedRuleContext(Java9Parser.PostfixExpressionContext,0)
 
 
+        def DEC(self):
+            return self.getToken(Java9Parser.DEC, 0)
+
         def getRuleIndex(self):
             return Java9Parser.RULE_postDecrementExpression
 
@@ -19152,6 +20412,8 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def DEC(self):
+            return self.getToken(Java9Parser.DEC, 0)
 
         def getRuleIndex(self):
             return Java9Parser.RULE_postDecrementExpression_lf_postfixExpression
@@ -19189,9 +20451,15 @@ class Java9Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def LPAREN(self):
+            return self.getToken(Java9Parser.LPAREN, 0)
+
         def primitiveType(self):
             return self.getTypedRuleContext(Java9Parser.PrimitiveTypeContext,0)
 
+
+        def RPAREN(self):
+            return self.getToken(Java9Parser.RPAREN, 0)
 
         def unaryExpression(self):
             return self.getTypedRuleContext(Java9Parser.UnaryExpressionContext,0)

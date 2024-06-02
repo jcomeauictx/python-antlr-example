@@ -1,4 +1,4 @@
-# Generated from Java9.g4 by ANTLR 4.7.1
+# Generated from Java9.g4 by ANTLR 4.7.2
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
@@ -542,18 +542,18 @@ def serializedATN():
         buf.write("\3\2\2\2\u0494\u0497\3\2\2\2\u0495\u0496\3\2\2\2\u0495")
         buf.write("\u0493\3\2\2\2\u0496\u0498\3\2\2\2\u0497\u0495\3\2\2\2")
         buf.write("\u0498\u0499\7,\2\2\u0499\u049a\7\61\2\2\u049a\u049b\3")
-        buf.write("\2\2\2\u049b\u049c\b\u00a4\3\2\u049c\u0148\3\2\2\2\u049d")
+        buf.write("\2\2\2\u049b\u049c\b\u00a4\2\2\u049c\u0148\3\2\2\2\u049d")
         buf.write("\u049e\7\61\2\2\u049e\u049f\7\61\2\2\u049f\u04a3\3\2\2")
         buf.write("\2\u04a0\u04a2\n\27\2\2\u04a1\u04a0\3\2\2\2\u04a2\u04a5")
         buf.write("\3\2\2\2\u04a3\u04a1\3\2\2\2\u04a3\u04a4\3\2\2\2\u04a4")
         buf.write("\u04a6\3\2\2\2\u04a5\u04a3\3\2\2\2\u04a6\u04a7\b\u00a5")
-        buf.write("\3\2\u04a7\u014a\3\2\2\29\2\u02e8\u02ec\u02f0\u02f4\u02f8")
+        buf.write("\2\2\u04a7\u014a\3\2\2\29\2\u02e8\u02ec\u02f0\u02f4\u02f8")
         buf.write("\u02ff\u0304\u0306\u030a\u030d\u0311\u0318\u031c\u0321")
         buf.write("\u0329\u032c\u0333\u0337\u033b\u0341\u0344\u034b\u034f")
         buf.write("\u0357\u035a\u0361\u0365\u0369\u036e\u0371\u0374\u0379")
         buf.write("\u037c\u0381\u0386\u038e\u0399\u039d\u03a2\u03a6\u03b6")
         buf.write("\u03c0\u03c6\u03cd\u03d1\u03d7\u03e4\u03ec\u0475\u047e")
-        buf.write("\u0486\u048b\u0495\u04a3\4\b\2\2\2\3\2")
+        buf.write("\u0486\u048b\u0495\u04a3\3\2\3\2")
         return buf.getvalue()
 
 
@@ -765,7 +765,7 @@ class Java9Lexer(Lexer):
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.7.1")
+        self.checkVersion("4.7.2")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
@@ -789,8 +789,7 @@ class Java9Lexer(Lexer):
          
 
             if predIndex == 1:
-                return Character.toCodePoint(chr(_input.LA(-2)), chr(_input.LA(-1)))
-                #return Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))
+                return Character.isJavaIdentifierStart(Character.toCodePoint(_input.LA(-2), _input.LA(-1)))
          
 
     def JavaLetterOrDigit_sempred(self, localctx:RuleContext, predIndex:int):
@@ -799,8 +798,7 @@ class Java9Lexer(Lexer):
          
 
             if predIndex == 3:
-                return Character.toCodePoint(chr(_input.LA(-2)), chr(_input.LA(-1)))
-                #return Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))
+                return Character.isJavaIdentifierPart(Character.toCodePoint(_input.LA(-2), _input.LA(-1)))
          
 
 
