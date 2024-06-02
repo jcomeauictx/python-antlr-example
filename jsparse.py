@@ -48,6 +48,12 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         logging.info('ctx: %s', ctx.getText())
 
+    def exitProgram(self, ctx):
+        '''
+        print out modified source
+        '''
+        logging.info('ctx: %s', ctx.getText())
+
 def main(filename):
     '''
     Parse file and display it, optionally modifying it
