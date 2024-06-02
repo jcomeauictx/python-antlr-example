@@ -46,13 +46,25 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         convert arrow function to old-style `function(){;}`
         '''
-        logging.info('ctx: %s', ctx.getText())
+        logging.info('ctx: %s: %s', ctx.getText(), dir(ctx))
+        args = ctx.start.text
+        logging.debug('args: %s', args)
+        if len(args.strip('()')) != len(args) - 2:
+            # assume single unparenthesized arg
+            self.rewriter.insertBeforeToken(ctx.start, 'function(')
+            self.rewriter.insertAfterToken(ctx.start, ')')
+        else:
+            # assume parenthesized arg(s)
+            self.rewriter.insertBeforeToken(ctx.start, 'function')
+        # now delete the arrow ('=>')
+        # (this fails because it's not a token, it's a Terminal Node)
+        #self.rewriter.deleteToken(ctx.children[1])
 
     def exitProgram(self, ctx):
         '''
         print out modified source
         '''
-        logging.info('ctx: %s', ctx.getText())
+        logging.info('modified program: %s', self.rewriter.getDefaultText())
 
 def main(filename):
     '''
