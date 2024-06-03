@@ -49,7 +49,9 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         logging.debug('ctx: %r: %s', ctx.getText(), show(ctx))
         logging.debug('ctx.arrowFunctionParameters: %s',
-                      ctx.arrowFunctionParameters())
+                      ctx.arrowFunctionParameters().getText())
+        logging.debug('ctx.arrowFunctionBody: %s',
+                      ctx.arrowFunctionBody().getText())
         if ctx.start.text != '(':
             # assume single unparenthesized arg
             self.rewriter.insertBeforeToken(ctx.start, 'function(')
