@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
 
 LOWERCASE_LETTERS = tuple('abcdefghijklmnopqrstuvwxyz')
 
-class DowngradeJavascriptListener(JavaScriptParserListener):
+class DowngradingJavascriptListener(JavaScriptParserListener):
     '''
     Subclass listener to change `let` to `var` and other primitivizations
     '''
@@ -28,11 +28,12 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         self.rewriter = rewriter
 
-    def enterVariableStatement(self, ctx):
+    def enterVariableDeclarationList(self, ctx):
         '''
         convert `let` and `const` to `var`
         '''
         logging.debug('ctx: %r: %s', ctx.getText(), show(ctx))
+        #logging.debug('varModifier: %s', self.varModifier.getText())
 
     def enterArrowFunction(self, ctx):
         '''
@@ -67,7 +68,7 @@ def main(filename):
     tokens = CommonTokenStream(lexer)
     parser = JavaScriptParser(tokens)
     rewriter = TokenStreamRewriter(tokens)
-    listener = DowngradeJavascriptListener(rewriter)
+    listener = DowngradingJavascriptListener(rewriter)
     tree = parser.program()
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
