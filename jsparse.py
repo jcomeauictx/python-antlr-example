@@ -46,12 +46,17 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
                       body.getText())
         #import pdb; pdb.set_trace()
         self.rewriter.deleteToken(arrow.symbol)
-        if ctx.start.text != '(':
+        if parameters.start.text != '(':
             # assume single unparenthesized arg
-            self.rewriter.insertBeforeToken(ctx.start, 'function(')
+            self.rewriter.insertBeforeToken(parameters.start, 'function(')
+            self.rewriter.insertAfterToken(parameters.stop, ')')
         else:
             # parenthesized arg(s)
             self.rewriter.insertBeforeToken(ctx.start, 'function')
+        if body.start.text != '{':
+            # assume single statement (for now)
+            self.rewriter.insertBeforeToken(body.start, '{return ')
+            self.rewriter.insertAfterToken(body.stop, '}')
 
 def main(filename):
     '''
