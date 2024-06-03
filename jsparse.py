@@ -28,15 +28,6 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         self.rewriter = rewriter
 
-    def visitTerminal(self, node):
-        '''
-        delete arrow `=>`
-        '''
-        if node.symbol.text == '=>':
-            logging.debug('node: %r: %s', node.getText(), show(node))
-            self.rewriter.deleteToken(node.symbol)
-        #import pdb; pdb.set_trace()
-
     def enterVariableStatement(self, ctx):
         '''
         convert `let` and `const` to `var`
@@ -53,6 +44,7 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
                       parameters.getText())
         logging.debug('ctx.arrowFunctionBody: %s',
                       body.getText())
+        #import pdb; pdb.set_trace()
         self.rewriter.deleteToken(arrow.symbol)
         if ctx.start.text != '(':
             # assume single unparenthesized arg
