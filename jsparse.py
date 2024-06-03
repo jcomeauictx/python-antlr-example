@@ -35,7 +35,6 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         logging.debug('node: %r: %s', node.getText(), show(node))
         if node.symbol.text == '=>':
-            ctx = node.parentCtx
             self.rewriter.deleteToken(node.symbol)
         #import pdb; pdb.set_trace()
 
