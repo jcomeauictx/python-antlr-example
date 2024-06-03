@@ -33,7 +33,12 @@ class DowngradingJavascriptListener(JavaScriptParserListener):
         convert `let` and `const` to `var`
         '''
         logging.debug('ctx: %r: %s', ctx.getText(), show(ctx))
-        #logging.debug('varModifier: %s', self.varModifier.getText())
+        modifier = ctx.varModifier()
+        logging.debug('varModifier: %s', modifier)
+        if modifier.getText() != 'var':
+            self.rewriter.replaceRangeTokens(
+                modifier.start, modifier.stop, 'var'
+            )
 
     def enterArrowFunction(self, ctx):
         '''
