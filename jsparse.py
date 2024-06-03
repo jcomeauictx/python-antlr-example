@@ -6,8 +6,7 @@ adapted from sample script at
 https://github.com/antlr/grammars-v4/tree/master/javascript/javascript/Python3
 '''
 import sys, logging  # pylint: disable=multiple-imports
-from antlr4 import FileStream, CommonTokenStream, TerminalNode, \
-    ParseTreeListener, ParseTreeWalker
+from antlr4 import FileStream, CommonTokenStream, ParseTreeWalker
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 from JavaScriptLexer import JavaScriptLexer
 from JavaScriptParser import JavaScriptParser
@@ -27,8 +26,11 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         self.rewriter = rewriter
 
-    def enterTerminalNode(self, ctx):
-        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
+    def visitTerminal(self, node):
+        '''
+        delete arrow `=>`
+        '''
+        logging.debug('ctx: %s: %s', node.getText(), dir(node))
 
     def enterVariableStatement(self, ctx):
         '''
@@ -63,7 +65,8 @@ def main(filename):
     tree = parser.program()
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
-    logging.info('parse tree: %s', tree.toStringTree(recog=parser))
+    logging.log(logging.NOTSET,  # change to logging.DEBUG to see this
+        'parse tree: %s', tree.toStringTree(recog=parser))
     print(listener.rewriter.getDefaultText())
 
 if __name__ == '__main__':
