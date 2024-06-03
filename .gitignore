@@ -1,4 +1,6 @@
 ArrowFunctions.js
+Constants.js
+LetAndAsync.js
 *.interp
 *.tokens
 *Lexer.py
