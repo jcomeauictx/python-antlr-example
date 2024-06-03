@@ -1,28 +1,19 @@
 #!/usr/bin/python3
 '''
-Example JavaScript parser from ANTLR repository
+Parse and modify JavaScript
 
+adapted from sample script at
 https://github.com/antlr/grammars-v4/tree/master/javascript/javascript/Python3
 '''
 import sys, logging  # pylint: disable=multiple-imports
 from antlr4 import FileStream, CommonTokenStream, TerminalNode, \
     ParseTreeListener, ParseTreeWalker
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
-from JavaScriptLexer import JavaScriptLexer as JSL
-from JavaScriptParser import JavaScriptParser as JSP
+from JavaScriptLexer import JavaScriptLexer
+from JavaScriptParser import JavaScriptParser
 from JavaScriptParserListener import JavaScriptParserListener
 
 logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
-
-class WriteTreeListener(ParseTreeListener):
-    '''
-    Subclass of ParseTreeListener to write out parse tree
-    '''
-    def visitTerminal(self, node:TerminalNode):
-        '''
-        Shows terminal nodes visited to stderr
-        '''
-        logging.info("Visit Terminal: %s - %s", node, repr(node))
 
 class DowngradeJavascriptListener(JavaScriptParserListener):
     '''
@@ -36,66 +27,44 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         self.rewriter = rewriter
 
-    def exitVariableStatement(self, ctx):
+    def enterTerminalNode(self, ctx):
+        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
+
+    def enterVariableStatement(self, ctx):
         '''
         convert `let` and `const` to `var`
         '''
-        logging.info('ctx: %s', ctx.getText())
+        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
 
-    def exitArrowFunction(self, ctx):
+    def enterArrowFunction(self, ctx):
         '''
         convert arrow function to old-style `function(){;}`
         '''
-        logging.info('ctx: %s: %s', ctx.getText(), dir(ctx))
-        args = ctx.start.text
-        logging.debug('args: %s', args)
-        if len(args.strip('()')) != len(args) - 2:
+        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
+        logging.debug('ctx.arrowFunctionParameters: %s',
+                      ctx.arrowFunctionParameters())
+        if ctx.start.text != '(':
             # assume single unparenthesized arg
             self.rewriter.insertBeforeToken(ctx.start, 'function(')
-            self.rewriter.insertAfterToken(ctx.start, ')')
         else:
-            # assume parenthesized arg(s)
+            # parenthesized arg(s)
             self.rewriter.insertBeforeToken(ctx.start, 'function')
-        # now delete the arrow ('=>')
-        # (this fails because it's not a token, it's a Terminal Node)
-        #self.rewriter.deleteToken(ctx.children[1])
-
-    def exitProgram(self, ctx):
-        '''
-        print out modified source
-        '''
-        logging.info('modified program: %s', self.rewriter.getDefaultText())
 
 def main(filename):
     '''
-    Parse file and display it, optionally modifying it
+    Parse file, fix for older browsers, and print out modified source
     '''
     input_stream = FileStream(filename)
-    logging.info("Test started for: %s", filename)
-    lexer = JSL(input_stream)
+    lexer = JavaScriptLexer(input_stream)
     tokens = CommonTokenStream(lexer)
-    parser = JSP(tokens)
-    listener = WriteTreeListener()
-    logging.info("Created parsers")
-    tree = parser.program()
-    logging.info('walking parse tree')
-    ParseTreeWalker.DEFAULT.walk(listener, tree)
-    logging.info('parse tree: %s', tree.toStringTree(recog=parser))
-    input_stream.seek(0)
-    lexer = JSL(input_stream)
-    logging.info('reconstructed:')
-    print(''.join([token.text for token in lexer.getAllTokens()]))
-    logging.debug("let's do it again, this time to modify the javascript")
-    input_stream.seek(0)
-    lexer = JSL(input_stream)
-    tokens = CommonTokenStream(lexer)
-    parser = JSP(tokens)
+    parser = JavaScriptParser(tokens)
     rewriter = TokenStreamRewriter(tokens)
     listener = DowngradeJavascriptListener(rewriter)
     tree = parser.program()
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
-    print(listener.rewriter.getText('default', 0, -1))
+    logging.info('parse tree: %s', tree.toStringTree(recog=parser))
+    print(listener.rewriter.getDefaultText())
 
 if __name__ == '__main__':
     main(sys.argv[1])
