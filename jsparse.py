@@ -6,6 +6,7 @@ adapted from sample script at
 https://github.com/antlr/grammars-v4/tree/master/javascript/javascript/Python3
 '''
 import sys, logging  # pylint: disable=multiple-imports
+from string import ascii_lowercase
 from antlr4 import FileStream, CommonTokenStream, ParseTreeWalker
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 from JavaScriptLexer import JavaScriptLexer
@@ -13,6 +14,8 @@ from JavaScriptParser import JavaScriptParser
 from JavaScriptParserListener import JavaScriptParserListener
 
 logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
+
+LOWERCASE_LETTERS = tuple(ascii_lowercase)
 
 class DowngradeJavascriptListener(JavaScriptParserListener):
     '''
@@ -30,19 +33,20 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         delete arrow `=>`
         '''
-        logging.debug('ctx: %s: %s', node.getText(), dir(node))
+        logging.debug('node: %r: %s', node.getText(), show(node))
+        import pdb; pdb.set_trace()
 
     def enterVariableStatement(self, ctx):
         '''
         convert `let` and `const` to `var`
         '''
-        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
+        logging.debug('ctx: %r: %s', ctx.getText(), show(ctx))
 
     def enterArrowFunction(self, ctx):
         '''
         convert arrow function to old-style `function(){;}`
         '''
-        logging.debug('ctx: %s: %s', ctx.getText(), dir(ctx))
+        logging.debug('ctx: %r: %s', ctx.getText(), show(ctx))
         logging.debug('ctx.arrowFunctionParameters: %s',
                       ctx.arrowFunctionParameters())
         if ctx.start.text != '(':
@@ -68,6 +72,22 @@ def main(filename):
     logging.log(logging.NOTSET,  # change to logging.DEBUG to see this
         'parse tree: %s', tree.toStringTree(recog=parser))
     print(listener.rewriter.getDefaultText())
+
+def show(something):
+    '''
+    a vars-alike that only shows things likely to be of interest
+    '''
+    candidates = {
+        k: getattr(something, k) for k in dir(something)
+        if k.startswith(LOWERCASE_LETTERS)
+    }
+    result = {}
+    for k, v in candidates.items():
+        if callable(v):
+            result[k] = '(function)'
+        else:
+            result[k] = v
+    return result
 
 if __name__ == '__main__':
     main(sys.argv[1])
