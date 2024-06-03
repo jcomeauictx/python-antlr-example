@@ -6,7 +6,6 @@ adapted from sample script at
 https://github.com/antlr/grammars-v4/tree/master/javascript/javascript/Python3
 '''
 import sys, logging  # pylint: disable=multiple-imports
-from string import ascii_lowercase
 from antlr4 import FileStream, CommonTokenStream, ParseTreeWalker
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 from JavaScriptLexer import JavaScriptLexer
@@ -15,7 +14,7 @@ from JavaScriptParserListener import JavaScriptParserListener
 
 logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
 
-LOWERCASE_LETTERS = tuple(ascii_lowercase)
+LOWERCASE_LETTERS = tuple('abcdefghijklmnopqrstuvwxyz')
 
 class DowngradeJavascriptListener(JavaScriptParserListener):
     '''
@@ -33,8 +32,8 @@ class DowngradeJavascriptListener(JavaScriptParserListener):
         '''
         delete arrow `=>`
         '''
-        logging.debug('node: %r: %s', node.getText(), show(node))
         if node.symbol.text == '=>':
+            logging.debug('node: %r: %s', node.getText(), show(node))
             self.rewriter.deleteToken(node.symbol)
         #import pdb; pdb.set_trace()
 
