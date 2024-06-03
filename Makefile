@@ -19,7 +19,8 @@ BAKFILES := $(G4FILES:.g4=.g4.bak)
 PARSERS := $($(PARSER))Parser.py $($(PARSER))Lexer.py
 PARSE := $(word 1, $(PARSERS))
 LISTENER := $(G4FILE:.g4=Listener.py)
-JAVASCRIPTEXAMPLE ?= ArrowFunctions.js
+JAVASCRIPTEXAMPLES := ArrowFunctions.js Constants.js LetAndAsync.js
+JAVASCRIPTEXAMPLE ?= $(word 1, $(JAVASCRIPTEXAMPLES))
 HELLOEXAMPLE ?= Hello $(USER)
 MORSEEXAMPLE ?= .... . .-.. .-.. ---   .__ ___ ._. ._.. _..       # spaces
 EXAMPLE := $($(PARSER)EXAMPLE)
